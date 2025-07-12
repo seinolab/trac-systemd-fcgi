@@ -1,0 +1,2 @@
+g trac -
+u trac - "Trac FastCGI user" /var/lib/trac /usr/sbin/nologin

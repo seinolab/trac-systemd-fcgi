@@ -1,0 +1,11 @@
+[Unit]
+Description=Trac: Integrated SCM & Project Management
+
+[Socket]
+SocketUser=trac
+SocketGroup=trac
+SocketMode=0660
+ListenStream=/run/trac/%i/trac.sock
+
+[Install]
+WantedBy=sockets.target

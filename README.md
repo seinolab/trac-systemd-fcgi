@@ -40,7 +40,7 @@ This project itself is minimal and unlikely to change unless required by changes
 
 ```bash
 sudo dnf -y rpmbuild
-curl -L "https://github.com/seinolab/trac-systemd-fcgi/archive/refs/tags/1.6.tar.gz" -o trac-systemd-fcgi-1.6.tar.gz
+curl -L "https://github.com/seinolab/trac-systemd-fcgi/archive/refs/tags/1.6-2.tar.gz" -o trac-systemd-fcgi-1.6.tar.gz
 rpmbuild -tb --clean trac-systemd-fcgi-1.6.tar.gz
 ls ~/rpmbuild/RPMS/noarch/trac-systemd-fcgi*.rpm | xargs dnf install -y
 ```

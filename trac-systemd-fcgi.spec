@@ -1,6 +1,6 @@
 Name:           trac-systemd-fcgi
 Version:        1.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Trac FastCGI wrapper and systemd unit
 
 License:        BSD-3-Clause
@@ -46,5 +46,8 @@ install -D -m 0644 trac-systemd-fcgi.sysusers %{buildroot}/usr/lib/sysusers.d/tr
 systemd-sysusers /usr/lib/sysusers.d/trac-systemd-fcgi.conf || :
 
 %changelog
+* Mon Nov 09 2026 Takahiro Seino, Ph.D. <5173733+seinolab@users.noreply.github.com> - 1.6-2
+- Allow Trac FastCGI to systemd socket activation
+
 * Sat Jul 12 2025 Takahiro Seino, Ph.D. <5173733+seinolab@users.noreply.github.com> - 1.6-1
 - Initial release

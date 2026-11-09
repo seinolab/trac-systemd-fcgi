@@ -17,13 +17,18 @@
 
 from __future__ import print_function
 import os
+import socket
 import sys
 import setproctitle
 # import pkg_resources
 from trac.web.main import dispatch_request
 from trac.web._fcgi import WSGIServer
 
-def dispatch_fcgi(sockaddr):
+class SystemdWSGIServer(WSGIServer):
+    def _setupSocket(self):
+        return socket.fromfd(0, socket.AF_UNIX, socket.SOCK_STREAM)
+
+def dispatch_fcgi():
     try:
         if 'PYTHON_EGG_CACHE' not in os.environ:
             if 'TRAC_ENV' in os.environ:
@@ -32,7 +37,7 @@ def dispatch_fcgi(sockaddr):
                 egg_cache = os.path.join(os.environ['TRAC_ENV_PARENT_DIR'],
                                          '.egg-cache')
             # pkg_resources.set_extraction_path(egg_cache)
-        fcgiserv = WSGIServer(dispatch_request, bindAddress=sockaddr, umask=7)
+        fcgiserv = SystemdWSGIServer(dispatch_request)
         fcgiserv.run()
 
     except SystemExit:
@@ -55,7 +60,7 @@ def dispatch_fcgi(sockaddr):
 def main():
     if 'TRAC_PROCESS_TITLE' in os.environ:
         setproctitle.setproctitle(os.environ['TRAC_PROCESS_TITLE'])
-    dispatch_fcgi(os.environ['TRAC_LISTEN_SOCKET'])
+    dispatch_fcgi()
 
 if __name__ == "__main__":
     main()

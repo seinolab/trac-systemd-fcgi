@@ -9,11 +9,8 @@ Type=simple
 User=trac
 Group=trac
 WorkingDirectory=/var/lib/trac/%i/
-RuntimeDirectory=trac/%i
-RuntimeDirectoryMode=0755
 Environment=TRAC_ENV=/var/lib/trac/%i/
 #Environment=PYTHON_EGG_CACHE=/var/lib/trac/%i/.egg-cache
-Environment=TRAC_LISTEN_SOCKET=/run/trac/%i/trac.sock
 Environment=TRAC_PROCESS_TITLE="trac.fcgi (%i)"
 StandardInput=socket
 StandardOutput=null

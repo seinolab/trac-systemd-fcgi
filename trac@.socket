@@ -5,6 +5,8 @@ Description=Trac: Integrated SCM & Project Management
 SocketUser=trac
 SocketGroup=trac
 SocketMode=0660
+RuntimeDirectory=trac/%i
+RuntimeDirectoryMode=0755
 ListenStream=/run/trac/%i/trac.sock
 
 [Install]
